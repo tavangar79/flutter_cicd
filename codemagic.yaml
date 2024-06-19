@@ -6,13 +6,13 @@ workflows:
     scripts:
       - name: Build Google Play version
         script: |
-          flutter build apk -t lib/main_google.dart
+          flutter build apk -t lib/main_google.dart --flavor store1
       - name: Rename export file
         script: |
           mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/app-release-google-play.apk
       - name: Build main version
         script: |
-          flutter build apk -t lib/main.dart
+          flutter build apk -t lib/main.dart --flavor store2
       - name: Rename export file
         script: |
           mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/app-release.apk

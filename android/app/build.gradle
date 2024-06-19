@@ -58,6 +58,29 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    productFlavors {
+        store1 {
+            // specific configurations for store1 if needed
+        }
+        store2 {
+            // specific configurations for store2 if needed
+        }
+        store3 {
+            // specific configurations for store3 if needed
+        }
+    }
+    sourceSets {
+        store1 {
+            manifest.srcFile 'src/store1/AndroidManifest.xml'
+        }
+        store2 {
+            manifest.srcFile 'src/store2/AndroidManifest.xml'
+        }
+        store3 {
+            manifest.srcFile 'src/store3/AndroidManifest.xml'
+        }
+    }
 }
 
 flutter {
