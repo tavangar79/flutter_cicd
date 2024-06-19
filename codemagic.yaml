@@ -1,5 +1,42 @@
 workflows:
-  hello-world:
-    name: Hello world workflow
+  build_google_play:
+    name: Build for Google Play
+    environment:
+      flutter: stable
     scripts:
-        - echo "Hello World!"
+      - name: Build Google Play version
+        script: |
+          flutter build apk -t lib/main_google.dart
+    artifacts:
+      - build/app/outputs/flutter-apk/app-googlePlay-release.apk
+    triggering:
+      events:
+        - tag
+
+  build_website:
+    name: Build for main
+    environment:
+      flutter: stable
+    scripts:
+      - name: Build main version
+        script: |
+          flutter build apk -t lib/main.dart
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+    triggering:
+      events:
+        - tag
+
+  build_galaxy_store:
+    name: Build for Production
+    environment:
+      flutter: stable
+    scripts:
+      - name: Build Production version
+        script: |
+          flutter build apk -t lib/main_pro.dart
+    artifacts:
+      - build/app/outputs/flutter-apk/app-pro-release.apk
+    triggering:
+      events:
+        - tag
