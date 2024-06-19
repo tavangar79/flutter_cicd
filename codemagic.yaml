@@ -8,7 +8,7 @@ workflows:
         script: |
           flutter build apk -t lib/main_google.dart
     artifacts:
-      - build/app/outputs/flutter-apk/app-googlePlay-release.apk
+      - build/app/outputs/flutter-apk/app-release.apk
     triggering:
       events:
         - tag
