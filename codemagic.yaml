@@ -7,18 +7,18 @@ workflows:
       - name: Build Google Play version
         script: |
           flutter build apk -t lib/main_google.dart --flavor store1
-      - name: Rename export file
-        script: |
-          mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/app-release-google-play.apk
+      # - name: Rename export file
+      #   script: |
+      #     mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/app-release-google-play.apk
       - name: Build main version
         script: |
           flutter build apk -t lib/main.dart --flavor store2
-      - name: Rename export file
-        script: |
-          mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/app-release.apk
+      # - name: Rename export file
+      #   script: |
+      #     mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/app-release.apk
     artifacts:
-      - build/app/outputs/flutter-apk/app-release-google-play.apk
-      - build/app/outputs/flutter-apk/app-release.apk
+      - build/app/outputs/flutter-apk/app-store1-release.apk
+      - build/app/outputs/flutter-apk/app-store2-release.apk
 
     triggering:
       events:

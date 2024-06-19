@@ -36,9 +36,11 @@ android {
         jvmTarget = '1.8'
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
+    // sourceSets {
+    //     main.java.srcDirs += 'src/main/kotlin'
+    // }
+
+    flavorDimensions "default"
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
@@ -61,24 +63,31 @@ android {
 
     productFlavors {
         store1 {
+            dimension "default"
             // specific configurations for store1 if needed
         }
         store2 {
+            dimension "default"
             // specific configurations for store2 if needed
         }
         store3 {
+            dimension "default"
             // specific configurations for store3 if needed
         }
     }
+
     sourceSets {
         store1 {
             manifest.srcFile 'src/store1/AndroidManifest.xml'
+            main.java.srcDirs += 'src/main/kotlin'
         }
         store2 {
             manifest.srcFile 'src/store2/AndroidManifest.xml'
+            main.java.srcDirs += 'src/main/kotlin'
         }
         store3 {
             manifest.srcFile 'src/store3/AndroidManifest.xml'
+            main.java.srcDirs += 'src/main/kotlin'
         }
     }
 }
