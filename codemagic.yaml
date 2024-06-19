@@ -12,7 +12,9 @@ workflows:
     triggering:
       events:
         - tag
-      tag_pattern: v*
+      tag_patterns:                 # Include or exclude watched tag labels
+        - pattern: '*'
+          include: true
 
   build_website:
     name: Build for main
