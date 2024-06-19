@@ -12,6 +12,7 @@ workflows:
     triggering:
       events:
         - tag
+      tag_pattern: v*
 
   build_website:
     name: Build for main
