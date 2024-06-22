@@ -17,8 +17,8 @@ jobs:
         id: yq
         uses: mikefarah/yq@master
         with:
-          cmd: yq -r '.version' 'pubspec.yaml'
+          cmd: yq -r '.version' 'pubspec.yaml' | sed 's/\"//g'
 
       - name: Get Project Version
-        run: echo "v${{ steps.yq.outputs.version }}"
+        run: echo "v${{ steps.yq.outputs }}"
         # run: echo "::set-output name=project_version::$(echo ${{ steps.yq.outputs.version }})"
