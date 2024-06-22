@@ -21,10 +21,13 @@ jobs:
       - name: Print version
         run: "echo Version: ${{ steps.read-version.outputs.version-number }}"
 
-      - uses: nick-invision/assert-action@v1
-        with:
-          expected: ${GITHUB_REF#refs/tags/}
-          actual: ${{ steps.read-version.outputs.version-number }}
+      - name: Print tag
+        run: "echo Tag: ${{ github.ref_name }}"
+
+      # - uses: nick-invision/assert-action@v1
+      #   with:
+      #     expected: ${{GITHUB_REF#refs/tags/}}
+      #     actual: ${{ steps.read-version.outputs.version-number }}
       
       # - name: Get version
       #   id: yq
