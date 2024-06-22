@@ -21,10 +21,13 @@ jobs:
       - name: Print version
         run: "echo Version: ${{ steps.read-version.outputs.version-number }}"
 
-      # - uses: nick-invision/assert-action@v1
-      #   with:
-      #     expected: 0.0.1+1
-      #     actual: ${{ steps.read-version.outputs.version-number }}
+      - uses: nick-invision/assert-action@v1
+        with:
+          expected: 0.0.1+1
+          actual: ${{ steps.read-version.outputs.version-number }}
+
+      - name: Check working assert
+        run: "echo here"
       
       # - name: Get version
       #   id: yq
