@@ -12,13 +12,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      
-      - name: Get version
-        id: yq
-        uses: mikefarah/yq@master
-        with:
-          cmd: yq -r '.version' 'pubspec.yaml' | sed 's/\"//g'
 
-      - name: Get Project Version
-        run: echo "v${{ steps.yq.outputs }}"
+      - name: Get version  
+        id: read-version
+        uses: NiklasLehnfeld/flutter-version-number-action@main
+        with:
+          file-path: pubspec.yaml
+      - name: Print version
+        run: "echo Version: ${{ steps.read-version.outputs.version-number }}"
+
+      # - uses: nick-invision/assert-action@v1
+      #   with:
+      #     expected: 0.0.1+1
+      #     actual: ${{ steps.read-version.outputs.version-number }}
+      
+      # - name: Get version
+      #   id: yq
+      #   uses: mikefarah/yq@master
+      #   with:
+      #     cmd: yq -r .version pubspec.yaml
+
+      # - name: Get Project Version
+      #   run: echo "v${{ steps.yq.outputs }}"
         # run: echo "::set-output name=project_version::$(echo ${{ steps.yq.outputs.version }})"
