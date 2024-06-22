@@ -22,7 +22,10 @@ jobs:
         run: "echo Version: ${{ steps.read-version.outputs.version-number }}"
 
       - name: Print tag
-        run: "echo Tag: ${github.ref_name:1}"
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          TAG_WITHOUT_FIRST_CHAR=${TAG:1}
+          echo "The tag without the first character is: $TAG_WITHOUT_FIRST_CHAR"
 
       # - uses: nick-invision/assert-action@v1
       #   with:
