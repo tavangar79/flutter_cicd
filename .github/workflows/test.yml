@@ -20,5 +20,5 @@ jobs:
           cmd: yq -r '.version' 'pubspec.yaml'
 
       - name: Get Project Version
-        run: echo "PROJECT_VERSION=v${{ steps.yq.outputs.version }}" >> $GITHUB_ENV
+        run: echo "v${{ steps.yq.outputs.version }}"
         # run: echo "::set-output name=project_version::$(echo ${{ steps.yq.outputs.version }})"
