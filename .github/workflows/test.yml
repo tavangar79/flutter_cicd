@@ -1,4 +1,4 @@
-name: Build and Release Android App
+name: Test
 
 on:
   push:
