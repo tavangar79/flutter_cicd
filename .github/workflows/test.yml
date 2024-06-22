@@ -26,11 +26,11 @@ jobs:
         run: |
           TAG=${GITHUB_REF#refs/tags/}
           TAG_WITHOUT_FIRST_CHAR=${TAG:1}
-          echo "::set-output name=modified_tag::$TAG_WITHOUT_FIRST_CHAR"
+          echo "TAG_WITHOUT_FIRST_CHAR=$TAG_WITHOUT_FIRST_CHAR" >> $GITHUB_ENV
 
       - uses: nick-invision/assert-action@v1
         with:
-          expected: ${{ steps.get_tag.outputs.modified_tag }}
+          expected: ${{ env.TAG_WITHOUT_FIRST_CHAR }}
           actual: ${{ steps.read-version.outputs.version-number }}
       
       # - name: Get version
