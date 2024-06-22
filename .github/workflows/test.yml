@@ -1,0 +1,24 @@
+name: Build and Release Android App
+
+on:
+  push:
+    tags:
+      - 't*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Get version
+        id: yq
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq -r '.version' 'pubspec.yaml'
+
+      - name: Get Project Version
+        run: echo "PROJECT_VERSION=v${{ steps.yq.outputs.version }}" >> $GITHUB_ENV
+        # run: echo "::set-output name=project_version::$(echo ${{ steps.yq.outputs.version }})"
